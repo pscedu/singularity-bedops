@@ -1,0 +1,28 @@
+#%Module1.0
+#INSTALLATION instructions here https://gitlab.psc.edu/icaoberg/singularity-bedops
+
+##  "URL: https://www.psc.edu/resources/software"
+##  "Category: Bioinformatics"
+
+ proc ModulesHelp { } {
+ global dotversion
+
+ puts stderr "bedops  2.4.39 (bedops)"
+ puts stderr "------------------------"
+ puts stderr "\n To enable, first load the following required modules (via module load command): "
+ puts stderr "\tbedops/2.4.39"
+ puts stderr "\n Then to get help with the program's usage enter:  bedops\n"
+ }
+  module-whatis "bedops  2.4.39 (bedops)"
+  conflict bedops
+
+# set temporary directories to use ramdisk if running in batch job
+  if { [info exists env(RAMDISK)] } {
+     setenv _JAVA_OPTIONS -Djava.io.tmpdir=$::env(RAMDISK)
+     setenv TMPDIR $::env(RAMDISK)
+  }
+
+  set BEDOPS_HOME /opt/packages/bedops/2.4.39
+  setenv BEDOPS_HOME ${BEDOPS_HOME}
+  prepend-path PATH ${BEDOPS_HOME}
+
