@@ -1,6 +1,8 @@
 #!/bin/bash
 
-module load singularity/3.5.3
+if [ ! $(command -v singularity) ]; then
+	module load singularity/3.6.3
+fi
 
 VERSION=2.4.39
 DIRECTORY=/opt/packages/bedops/$VERSION
