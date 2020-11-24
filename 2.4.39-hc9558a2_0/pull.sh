@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if ! [ -x "$(command -v singularity)" ]; then
-	module load singularity/3.5.3
+if [ ! $(command -v singularity) ]; then
+	module load singularity
 fi
 
 singularity pull https://depot.galaxyproject.org/singularity/bedops:2.4.39--hc9558a2_0
