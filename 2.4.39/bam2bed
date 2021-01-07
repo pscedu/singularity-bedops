@@ -4,7 +4,7 @@ if [ ! $(command -v singularity) ]; then
 	module load singularity
 fi
 
-VERSION=0.0.14
+VERSION=2.4.39
 PACKAGE=bedops
 TOOL=bam2bed
 DIRECTORY=/opt/packages/$PACKAGE/$VERSION
