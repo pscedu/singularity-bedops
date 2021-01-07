@@ -5,7 +5,17 @@ if [ ! $(command -v singularity) ]; then
 fi
 
 VERSION=2.4.39
-DIRECTORY=/opt/packages/bedops/$VERSION
-LANG=C
+PACKAGE=bedops
+TOOL=bedextract
+DIRECTORY=/opt/packages/$PACKAGE/$VERSION
 
-singularity exec -B /ocean $DIRECTORY/singularity-bedops-$VERSION.sif bedextract "$@"
+PERSISTENT_FILE_STORAGE=/ocean
+if [ -d $PERSISTENT_FILE_STORAGE ]; then
+	OPTIONS="-B $PERSISTENT_FILE_STORAGE"
+fi
+
+if [ -d /local ]; then
+	OPTIONS=$OPTIONS" -B /local"
+fi
+
+singularity exec -B $PERSISTENT_FILE_STORAGE $DIRECTORY/singularity-$PACKAGE-$VERSION.sif $TOOL "$@"
