@@ -50,7 +50,7 @@ Tools included in this module are
 * unstarch
 ]])
 
-local package = "bowtie2"
-local version = "2.4.1"
+local package = "BEDOPS"
+local version = "2.4.39"
 local base    = pathJoin("/opt/packages",package,version)
 prepend_path("PATH", base)
