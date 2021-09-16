@@ -1,21 +1,19 @@
 #!/bin/bash
 
-if [ ! $(command -v singularity) ]; then
-	module load singularity
-fi
-
 VERSION=2.4.39
 PACKAGE=BEDOPS
 TOOL=starch
-DIRECTORY=/opt/packages/$PACKAGE/$VERSION
-
-PERSISTENT_FILE_STORAGE=/ocean
-if [ -d $PERSISTENT_FILE_STORAGE ]; then
-	OPTIONS="-B $PERSISTENT_FILE_STORAGE"
+DIRECTORY=$(dirname $0)
+if [ $HOSTNAME == 'workshop.bil.psc.edu' ]; then
+        STORAGES=(/ocean /hive /local)
+else
+    	STORAGES=(/ocean /bil /hive /local)
 fi
-
-if [ -d /local ]; then
-	OPTIONS=$OPTIONS" -B /local"
-fi
-
-singularity exec -B $PERSISTENT_FILE_STORAGE $DIRECTORY/singularity-$PACKAGE-$VERSION.sif $TOOL "$@"
+OPTIONS=""
+for STORAGE in "${STORAGES[@]}"
+do
+  	if [ -d "$STORAGE" ]; then
+                OPTIONS=$OPTIONS" -B $STORAGE"
+        fi
+done
+singularity exec $OPTIONS $DIRECTORY/singularity-$PACKAGE-$VERSION.sif $TOOL "$@"
