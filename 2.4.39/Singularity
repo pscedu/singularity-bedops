@@ -6,8 +6,3 @@ From: quay.io/biocontainers/bedops:2.4.39--hc9558a2_0
     EMAIL icaoberg@psc.edu
     WEBSITE https://gitlab.psc.edu/icaoberg/singularity-bedops
     VERSION 2.4.39
-
-%post
-   rm /etc/resolv.conf
-
-####################################################################################
