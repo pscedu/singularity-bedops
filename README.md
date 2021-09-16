@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/github/license/pscedu/singularity-bedops)
 
 # singularity-bedops
-<img src="https://bedops.readthedocs.io/en/latest/_static/logo_with_label_v3.png" width="100%" />
+<img src="https://bedops.readthedocs.io/en/latest/_static/logo_with_label_v3.png" width="50%" />
 
 Singularity recipe for BEDOPS.
 
@@ -16,9 +16,9 @@ Copy the
 * `SIF` file
 * and the `bedops` script
 
-to `/opt/packages/bedops/2.4.39`.
+to `/opt/packages/BEDOPS/2.4.40`.
 
-Copy the file `modulefile.lua` to `/opt/modulefiles/bedops` as `2.4.39.lua`.
+Copy the file `modulefile.lua` to `/opt/modulefiles/BEDOPS` as `2.4.40.lua`.
 
 ## Building the image using the recipe
 ### To build the image locally
